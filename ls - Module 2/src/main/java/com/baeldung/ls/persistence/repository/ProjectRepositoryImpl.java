@@ -1,11 +1,14 @@
 package com.baeldung.ls.persistence.repository;
 
-import com.baeldung.ls.persistence.model.Project;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-//@Repository
+import org.springframework.stereotype.Repository;
+
+import com.baeldung.ls.persistence.model.Project;
+
+@Repository
 public class ProjectRepositoryImpl implements IProjectRepository {
 
     private List<Project> projects = new ArrayList<>();
@@ -22,12 +25,13 @@ public class ProjectRepositoryImpl implements IProjectRepository {
         Project existingProject = findById(project.getId()).orElse(null);
         if (existingProject == null) {
             projects.add(project);
+            return project;
         } else {
             projects.remove(existingProject);
             Project newProject = new Project(project);
             projects.add(newProject);
+            return project;
         }
-        return project;
     }
 
 }

@@ -1,16 +1,25 @@
 package com.baeldung.ls.persistence.model;
 
-import javax.annotation.PostConstruct;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.PostConstruct;
+
 public class BeanA {
 
-    private static Logger log = LoggerFactory.getLogger(BeanA.class);
+    private String foo;
+    private static final Logger LOG = LoggerFactory.getLogger(BeanA.class);
 
     @PostConstruct
     public void post() {
-        log.info("@PostConstruct annotated method is called.");
+        LOG.info("value of the property foo is: {}", this.foo);
+    }
+
+    public String getFoo() {
+        return foo;
+    }
+
+    public void setFoo(String foo) {
+        this.foo = foo;
     }
 }
