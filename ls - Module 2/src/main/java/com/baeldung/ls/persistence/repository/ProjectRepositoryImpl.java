@@ -1,17 +1,14 @@
 package com.baeldung.ls.persistence.repository;
 
+import com.baeldung.ls.persistence.model.Project;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.stereotype.Repository;
-
-import com.baeldung.ls.persistence.model.Project;
-
-@Repository
+//@Repository
 public class ProjectRepositoryImpl implements IProjectRepository {
 
-    List<Project> projects = new ArrayList<>();
+    private List<Project> projects = new ArrayList<>();
 
     @Override
     public Optional<Project> findById(Long id) {
