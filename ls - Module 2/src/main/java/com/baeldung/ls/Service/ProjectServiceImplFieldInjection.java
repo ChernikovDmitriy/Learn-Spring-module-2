@@ -2,6 +2,7 @@ package com.baeldung.ls.Service;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -9,13 +10,11 @@ import com.baeldung.ls.persistence.model.Project;
 import com.baeldung.ls.persistence.repository.IProjectRepository;
 
 @Service
-public class ProjectServiceImpl implements IProjectService {
+public class ProjectServiceImplFieldInjection implements IProjectService {
 
+    @Autowired
+    @Qualifier("projectRepositoryImpl2")
     private IProjectRepository projectRepository;
-
-    public ProjectServiceImpl(@Qualifier("projectRepositoryImpl2") IProjectRepository projectRepository) {
-        this.projectRepository = projectRepository;
-    }
 
     @Override
     public Optional<Project> findById(Long id) {
